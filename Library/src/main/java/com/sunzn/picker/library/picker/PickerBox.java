@@ -21,21 +21,18 @@ import java.util.Calendar;
 public class PickerBox {
 
     private Dialog mDialog;
-    private Context mContext;
     private TimeWheel mTimeWheel;
     private PickerBoxListener mListener;
-    private ScrollerConfig mScrollerConfig;
 
     PickerBox(PickerBoxBuilder builder, Context context) {
-        View view = LayoutInflater.from(context).inflate(R.layout.picker_holder, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.picker_time_holder, null);
         mDialog = new Dialog(context, R.style.ActionBoxStyle);
         mDialog.setContentView(view);
         mDialog.setCancelable(builder.getCancelable());
         mDialog.setCanceledOnTouchOutside(builder.getCanceledOnTouchOutside());
-        mScrollerConfig = builder.getScrollerConfig();
+        ScrollerConfig mScrollerConfig = builder.getScrollerConfig();
         mListener = mScrollerConfig.mListener;
-
-        mContext = context;
+        mTimeWheel = new TimeWheel(view, mScrollerConfig);
 
         Window window = mDialog.getWindow();
         if (window != null) {
@@ -51,7 +48,6 @@ public class PickerBox {
     }
 
     private void initPickerBoxView(View view) {
-        mTimeWheel = new TimeWheel(view, mScrollerConfig);
         if (view != null) {
             view.findViewById(R.id.tv_cancel).setOnClickListener(new View.OnClickListener() {
                 @Override

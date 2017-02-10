@@ -67,7 +67,7 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter {
         this.maxValue = maxValue;
         this.format = format;
         this.unit = unit;
-        this.itemResourceId = R.layout.picker_item; // 默认样式
+        this.itemResourceId = R.layout.picker_time_item; // 默认样式
     }
 
     @Override
