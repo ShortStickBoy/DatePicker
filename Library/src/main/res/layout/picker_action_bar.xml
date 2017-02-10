@@ -25,7 +25,7 @@
         android:background="@color/action_bar_line"/>
 
     <TextView
-        android:id="@+id/tv_sure"
+        android:id="@+id/tv_ensure"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
