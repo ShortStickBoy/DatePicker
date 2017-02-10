@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.sunzn.picker.library.DatePickerDialog;
 import com.sunzn.picker.library.data.Mode;
 import com.sunzn.picker.library.listener.OnDateSetListener;
+import com.sunzn.picker.library.picker.PickerBox;
+import com.sunzn.picker.library.picker.PickerBoxListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -52,21 +54,48 @@ public class MainActivity extends AppCompatActivity {
                 Calendar calendar = new GregorianCalendar();
                 calendar.set(1960, 0, 1, 0, 0);
 
-                // 出生日期
-                DatePickerDialog dialog = new DatePickerDialog.Builder()
+                PickerBox box = PickerBox.newBox(MainActivity.this)
                         .setType(Mode.YEAR_MONTH_DAY)
                         .setMinMilliseconds(calendar.getTime().getTime())
                         .setMaxMilliseconds(System.currentTimeMillis())
                         .setCurMilliseconds(mLastTime)
                         .setCallback(mOnDateSetListener)
-                        .build();
-                if (dialog != null) {
-                    if (!dialog.isAdded()) {
-                        dialog.show(getSupportFragmentManager(), "year_month_day");
-                    }
-                }
+                        .setListener(new PickerBoxListener() {
+                            @Override
+                            public void onEnsureClick(long timeMillis) {
+                                String text = getDateToString1(timeMillis);
+                                tv.setText(text);
+                            }
+                        })
+                        .create();
+                box.show();
 
             }
         });
+
+
+//        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Calendar calendar = new GregorianCalendar();
+//                calendar.set(1960, 0, 1, 0, 0);
+//
+//                // 出生日期
+//                DatePickerDialog dialog = new DatePickerDialog.Builder()
+//                        .setType(Mode.YEAR_MONTH_DAY)
+//                        .setMinMilliseconds(calendar.getTime().getTime())
+//                        .setMaxMilliseconds(System.currentTimeMillis())
+//                        .setCurMilliseconds(mLastTime)
+//                        .setCallback(mOnDateSetListener)
+//                        .build();
+//                if (dialog != null) {
+//                    if (!dialog.isAdded()) {
+//                        dialog.show(getSupportFragmentManager(), "year_month_day");
+//                    }
+//                }
+//
+//            }
+//        });
     }
 }
