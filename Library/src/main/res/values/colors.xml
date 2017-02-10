@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="action_bar_line">#E0E0E0</color>
+    <color name="action_bar_cancel">#333333</color>
+    <color name="action_bar_ensure">#3262DE</color>
+    <color name="toolbar_bg">#FBFBFB</color>
+    <color name="item_selector_rect">#FFFFFF</color>
+    <color name="item_selector_line">#E0E0E0</color>
+
+</resources>
