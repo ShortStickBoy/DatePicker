@@ -87,7 +87,7 @@ public class DatePickerDialog extends DialogFragment implements View.OnClickList
 
         TextView cancel = (TextView) view.findViewById(R.id.tv_cancel);
         cancel.setOnClickListener(this); // 设置取消按钮
-        TextView sure = (TextView) view.findViewById(R.id.tv_sure);
+        TextView sure = (TextView) view.findViewById(R.id.tv_ensure);
         sure.setOnClickListener(this); // 设置确认按钮
 
         // 设置顶部栏
@@ -105,7 +105,7 @@ public class DatePickerDialog extends DialogFragment implements View.OnClickList
         int i = v.getId();
         if (i == R.id.tv_cancel) {
             dismiss(); // 取消
-        } else if (i == R.id.tv_sure) {
+        } else if (i == R.id.tv_ensure) {
             onSureClicked();
         }
     }

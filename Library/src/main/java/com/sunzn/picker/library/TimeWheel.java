@@ -16,7 +16,7 @@ import java.util.Calendar;
 /**
  * 时间滚轮, 用于控制时间数据
  */
-class TimeWheel {
+public class TimeWheel {
     private Context mContext;
 
     private WheelView mYearView, mMonthView, mDayView, mHourView, mMinuteView; // 滚动视图
@@ -56,7 +56,7 @@ class TimeWheel {
      * @param view           视图
      * @param scrollerConfig 滚动参数
      */
-    TimeWheel(View view, ScrollerConfig scrollerConfig) {
+    public TimeWheel(View view, ScrollerConfig scrollerConfig) {
         mScrollerConfig = scrollerConfig;
         mRepository = new TimeRepository(scrollerConfig);
         mContext = view.getContext();
@@ -311,29 +311,29 @@ class TimeWheel {
             mMinuteView.setCurrentItem(0, false);
     }
 
-    int getCurrentYear() {
+    public int getCurrentYear() {
         return mYearView.getCurrentItem() + mRepository.getMinYear();
     }
 
-    int getCurrentMonth() {
+    public int getCurrentMonth() {
         int curYear = getCurrentYear();
         return mMonthView.getCurrentItem() + +mRepository.getMinMonth(curYear);
     }
 
-    int getCurrentDay() {
+    public int getCurrentDay() {
         int curYear = getCurrentYear();
         int curMonth = getCurrentMonth();
         return mDayView.getCurrentItem() + mRepository.getMinDay(curYear, curMonth);
     }
 
-    int getCurrentHour() {
+    public int getCurrentHour() {
         int curYear = getCurrentYear();
         int curMonth = getCurrentMonth();
         int curDay = getCurrentDay();
         return mHourView.getCurrentItem() + mRepository.getMinHour(curYear, curMonth, curDay);
     }
 
-    int getCurrentMinute() {
+    public int getCurrentMinute() {
         int curYear = getCurrentYear();
         int curMonth = getCurrentMonth();
         int curDay = getCurrentDay();
