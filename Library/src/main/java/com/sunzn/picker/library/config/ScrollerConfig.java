@@ -5,7 +5,7 @@ import android.support.annotation.ColorRes;
 import com.sunzn.picker.library.data.Mode;
 import com.sunzn.picker.library.data.WheelCalendar;
 import com.sunzn.picker.library.listener.OnDateSetListener;
-import com.sunzn.picker.library.picker.PickerBoxListener;
+import com.sunzn.picker.library.picker.date.DatePickerBoxListener;
 
 import static com.sunzn.picker.library.config.DefaultConfig.MAX_LINE;
 
@@ -38,7 +38,7 @@ public class ScrollerConfig {
     public WheelCalendar mCurCalendar = new WheelCalendar(System.currentTimeMillis()); // 当前日期
 
     public OnDateSetListener mCallback; // 回调
-    public PickerBoxListener mListener; // 回调
+    public DatePickerBoxListener mListener; // 回调
 
     public int mMaxLines = MAX_LINE; // 最大行数, 依据控件样式
 }

@@ -1,4 +1,4 @@
-package com.sunzn.picker.library.picker;
+package com.sunzn.picker.library.picker.date;
 
 import android.content.Context;
 import android.support.annotation.ColorRes;
@@ -14,7 +14,7 @@ import com.sunzn.picker.library.listener.OnDateSetListener;
  * Created by sunzn on 2017/2/10.
  */
 
-public class PickerBoxBuilder {
+public class DatePickerBoxBuilder {
 
     private int mScreenWidth;
     private int mScreenHeight;
@@ -26,7 +26,7 @@ public class PickerBoxBuilder {
 
     private ScrollerConfig mScrollerConfig;
 
-    PickerBoxBuilder(Context context) {
+    DatePickerBoxBuilder(Context context) {
         if (context == null) throw new NullPointerException("Context may not be null");
         this.context = context;
 
@@ -46,7 +46,7 @@ public class PickerBoxBuilder {
         return mScreenHeight;
     }
 
-    public PickerBoxBuilder setCancelable(boolean cancelable) {
+    public DatePickerBoxBuilder setCancelable(boolean cancelable) {
         mCancelable = cancelable;
         return this;
     }
@@ -55,7 +55,7 @@ public class PickerBoxBuilder {
         return mCancelable;
     }
 
-    public PickerBoxBuilder setCanceledOnTouchOutside(boolean canceledOnTouchOutside) {
+    public DatePickerBoxBuilder setCanceledOnTouchOutside(boolean canceledOnTouchOutside) {
         mCanceledOnTouchOutside = canceledOnTouchOutside;
         return this;
     }
@@ -68,103 +68,103 @@ public class PickerBoxBuilder {
         return mScrollerConfig;
     }
 
-    public PickerBoxBuilder setType(Mode type) {
+    public DatePickerBoxBuilder setType(Mode type) {
         mScrollerConfig.mType = type;
         return this;
     }
 
-    public PickerBoxBuilder setThemeColor(@ColorRes int color) {
+    public DatePickerBoxBuilder setThemeColor(@ColorRes int color) {
         mScrollerConfig.mToolbarBkgColor = color;
         return this;
     }
 
-    public PickerBoxBuilder setCancelStringId(String left) {
+    public DatePickerBoxBuilder setCancelStringId(String left) {
         mScrollerConfig.mCancelString = left;
         return this;
     }
 
-    public PickerBoxBuilder setSureStringId(String right) {
+    public DatePickerBoxBuilder setSureStringId(String right) {
         mScrollerConfig.mSureString = right;
         return this;
     }
 
-    public PickerBoxBuilder setToolBarTextColor(int color) {
+    public DatePickerBoxBuilder setToolBarTextColor(int color) {
         mScrollerConfig.mToolBarTVColor = color;
         return this;
     }
 
-    public PickerBoxBuilder setWheelItemTextNormalColor(int color) {
+    public DatePickerBoxBuilder setWheelItemTextNormalColor(int color) {
         mScrollerConfig.mWheelTVNormalColor = color;
         return this;
     }
 
-    public PickerBoxBuilder setWheelItemTextSelectorColor(int color) {
+    public DatePickerBoxBuilder setWheelItemTextSelectorColor(int color) {
         mScrollerConfig.mWheelTVSelectorColor = color;
         return this;
     }
 
-    public PickerBoxBuilder setWheelItemTextSize(int size) {
+    public DatePickerBoxBuilder setWheelItemTextSize(int size) {
         mScrollerConfig.mWheelTVSize = size;
         return this;
     }
 
-    public PickerBoxBuilder setCyclic(boolean cyclic) {
+    public DatePickerBoxBuilder setCyclic(boolean cyclic) {
         mScrollerConfig.cyclic = cyclic;
         return this;
     }
 
-    public PickerBoxBuilder setMinMilliseconds(long milliseconds) {
+    public DatePickerBoxBuilder setMinMilliseconds(long milliseconds) {
         mScrollerConfig.mMinCalendar = new WheelCalendar(milliseconds);
         return this;
     }
 
-    public PickerBoxBuilder setMaxMilliseconds(long milliseconds) {
+    public DatePickerBoxBuilder setMaxMilliseconds(long milliseconds) {
         mScrollerConfig.mMaxCalendar = new WheelCalendar(milliseconds);
         return this;
     }
 
-    public PickerBoxBuilder setCurMilliseconds(long milliseconds) {
+    public DatePickerBoxBuilder setCurMilliseconds(long milliseconds) {
         mScrollerConfig.mCurCalendar = new WheelCalendar(milliseconds);
         return this;
     }
 
-    public PickerBoxBuilder setYearText(String year) {
+    public DatePickerBoxBuilder setYearText(String year) {
         mScrollerConfig.mYear = year;
         return this;
     }
 
-    public PickerBoxBuilder setMonthText(String month) {
+    public DatePickerBoxBuilder setMonthText(String month) {
         mScrollerConfig.mMonth = month;
         return this;
     }
 
-    public PickerBoxBuilder setDayText(String day) {
+    public DatePickerBoxBuilder setDayText(String day) {
         mScrollerConfig.mDay = day;
         return this;
     }
 
-    public PickerBoxBuilder setHourText(String hour) {
+    public DatePickerBoxBuilder setHourText(String hour) {
         mScrollerConfig.mHour = hour;
         return this;
     }
 
-    public PickerBoxBuilder setMinuteText(String minute) {
+    public DatePickerBoxBuilder setMinuteText(String minute) {
         mScrollerConfig.mMinute = minute;
         return this;
     }
 
-    public PickerBoxBuilder setCallback(OnDateSetListener listener) {
+    public DatePickerBoxBuilder setCallback(OnDateSetListener listener) {
         mScrollerConfig.mCallback = listener;
         return this;
     }
 
-    public PickerBoxBuilder setListener(PickerBoxListener listener) {
+    public DatePickerBoxBuilder setListener(DatePickerBoxListener listener) {
         mScrollerConfig.mListener = listener;
         return this;
     }
 
-    public PickerBox create() {
-        return new PickerBox(this, context);
+    public DatePickerBox create() {
+        return new DatePickerBox(this, context);
     }
 
 }

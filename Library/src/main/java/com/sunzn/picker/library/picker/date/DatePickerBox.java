@@ -1,4 +1,4 @@
-package com.sunzn.picker.library.picker;
+package com.sunzn.picker.library.picker.date;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -18,13 +18,13 @@ import java.util.Calendar;
  * Created by sunzn on 2017/2/10.
  */
 
-public class PickerBox {
+public class DatePickerBox {
 
     private Dialog mDialog;
     private TimeWheel mTimeWheel;
-    private PickerBoxListener mListener;
+    private DatePickerBoxListener mListener;
 
-    PickerBox(PickerBoxBuilder builder, Context context) {
+    DatePickerBox(DatePickerBoxBuilder builder, Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.picker_time_holder, null);
         mDialog = new Dialog(context, R.style.ActionBoxStyle);
         mDialog.setContentView(view);
@@ -91,8 +91,8 @@ public class PickerBox {
         if (mDialog != null) mDialog.dismiss();
     }
 
-    public static PickerBoxBuilder newBox(Context context) {
-        return new PickerBoxBuilder(context);
+    public static DatePickerBoxBuilder newBox(Context context) {
+        return new DatePickerBoxBuilder(context);
     }
 
 }
