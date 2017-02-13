@@ -18,7 +18,7 @@ public class TextPickerBoxBuilder {
     private boolean mCancelable = true;
     private boolean mCanceledOnTouchOutside = true;
 
-    private int mShowMode;
+    private String mText;
     private TextPickerBoxListener mListener;
 
     TextPickerBoxBuilder(Context context) {
@@ -69,13 +69,13 @@ public class TextPickerBoxBuilder {
         return mListener;
     }
 
-    public TextPickerBoxBuilder setShowMode(int mode) {
-        mShowMode = mode;
+    public TextPickerBoxBuilder setText(String text) {
+        mText = text;
         return this;
     }
 
-    public int getShowMode() {
-        return mShowMode;
+    public String getText() {
+        return mText == null ? "" : mText;
     }
 
     public TextPickerBox create() {

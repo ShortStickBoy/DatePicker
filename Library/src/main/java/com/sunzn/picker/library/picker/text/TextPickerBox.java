@@ -20,6 +20,7 @@ public class TextPickerBox {
 
     private Dialog mDialog;
     private Context mContext;
+    private final String mText;
     private EditText mInputView;
     private TextPickerBoxListener mListener;
 
@@ -31,6 +32,7 @@ public class TextPickerBox {
         mDialog.setCanceledOnTouchOutside(builder.getCanceledOnTouchOutside());
 
         mContext = context;
+        mText = builder.getText();
         mListener = builder.getTextPickerBoxListener();
 
 
@@ -51,6 +53,9 @@ public class TextPickerBox {
     private void initModeBoxView(View view) {
         if (view != null) {
             mInputView = (EditText) view.findViewById(R.id.et_text);
+            mInputView.setText(mText);
+            mInputView.setSelection(mText.length());
+
             TextView cancelView = (TextView) view.findViewById(R.id.tv_cancel);
             TextView ensureView = (TextView) view.findViewById(R.id.tv_ensure);
 
