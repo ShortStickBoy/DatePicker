@@ -28,7 +28,7 @@ public class TextPickerBox {
 
     TextPickerBox(TextPickerBoxBuilder builder, Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.picker_text_holder, null);
-        mDialog = new Dialog(context, R.style.ActionBoxStyle);
+        mDialog = new Dialog(context, R.style.ActionBoxStyleLong);
         mDialog.setContentView(view);
         mDialog.setCancelable(builder.getCancelable());
         mDialog.setCanceledOnTouchOutside(builder.getCanceledOnTouchOutside());
