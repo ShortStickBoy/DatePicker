@@ -1,5 +1,6 @@
 package com.sunzn.picker.library.picker.text;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.sunzn.picker.library.R;
+import com.sunzn.picker.library.utils.KeyBoardUtils;
 
 /**
  * Created by sunzn on 2017/2/10.
@@ -100,14 +102,16 @@ public class TextPickerBox {
     }
 
     public void show() {
-        if (mDialog != null) {
+        if (mDialog != null && mInputView != null) {
             mDialog.show();
+            KeyBoardUtils.showKeyBoard(mInputView);
         }
     }
 
     public void dismiss() {
-        if (mDialog != null) {
+        if (mDialog != null && mInputView != null && mContext != null) {
             mDialog.dismiss();
+            KeyBoardUtils.hideKeyBoard((Activity) mContext, mInputView);
         }
     }
 
