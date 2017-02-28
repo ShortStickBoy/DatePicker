@@ -110,8 +110,8 @@ public class TextPickerBox {
 
     public void dismiss() {
         if (mDialog != null && mInputView != null && mContext != null) {
-            mDialog.dismiss();
             KeyBoardUtils.hideKeyBoard((Activity) mContext, mInputView);
+            mDialog.dismiss();
         }
     }
 
