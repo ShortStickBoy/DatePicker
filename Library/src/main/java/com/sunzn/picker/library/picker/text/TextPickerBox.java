@@ -96,7 +96,6 @@ public class TextPickerBox {
         }
     }
 
-
     public static TextPickerBoxBuilder newBox(Context context) {
         return new TextPickerBoxBuilder(context);
     }
