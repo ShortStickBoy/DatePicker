@@ -17,12 +17,12 @@
         android:paddingRight="20dp"
         android:text="@string/picker_cancel"
         android:textColor="@color/action_bar_cancel"
-        android:textSize="18sp" />
+        android:textSize="17sp" />
 
     <View
         android:layout_width="1px"
         android:layout_height="match_parent"
-        android:background="@color/action_bar_line"/>
+        android:background="@color/action_bar_line" />
 
     <TextView
         android:id="@+id/tv_ensure"
@@ -35,6 +35,6 @@
         android:paddingRight="20dp"
         android:text="@string/picker_sure"
         android:textColor="@color/action_bar_ensure"
-        android:textSize="18sp" />
+        android:textSize="17sp" />
 
 </LinearLayout>
