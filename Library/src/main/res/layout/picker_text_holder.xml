@@ -11,6 +11,7 @@
         android:background="#F9F9F9"
         android:gravity="center"
         android:text="请输入充值金额"
+        android:textColor="#333333"
         android:textSize="18sp" />
 
     <View
