@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/picker_dialog_height">
 
-        <TextViewView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
