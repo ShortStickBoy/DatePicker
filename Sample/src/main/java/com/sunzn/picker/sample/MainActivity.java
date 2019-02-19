@@ -6,20 +6,19 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sunzn.picker.library.DatePickerDialog;
-import com.sunzn.picker.library.data.Mode;
 import com.sunzn.picker.library.listener.OnDateSetListener;
-import com.sunzn.picker.library.picker.PickerBox;
-import com.sunzn.picker.library.picker.PickerBoxListener;
+import com.sunzn.picker.library.picker.text.TextPickerBox;
+import com.sunzn.picker.library.picker.text.TextPickerBoxListener;
+import com.sunzn.picker.library.picker.year.YearPickBox;
+import com.sunzn.picker.library.picker.year.YearPickBoxUtils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日", Locale.ENGLISH);
+    //    private SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日", Locale.ENGLISH);
     private SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日", Locale.SIMPLIFIED_CHINESE);
 
     private long mLastTime = System.currentTimeMillis(); // 上次设置的时间
@@ -47,24 +46,35 @@ public class MainActivity extends AppCompatActivity {
 
         tv = (TextView) findViewById(R.id.tv);
 
+//        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                YearPickBoxUtils.showBox(MainActivity.this, 1995, 2000, 2005, new YearPickBox.ActionListener() {
+//                    @Override
+//                    public void onEnsure(int startYear, int endYear) {
+//                        tv.setText("时间：" + startYear + " - " + endYear);
+//                    }
+//
+//                    @Override
+//                    public void onCancel() {
+//
+//                    }
+//                });
+//
+//            }
+//        });
+
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Calendar calendar = new GregorianCalendar();
-                calendar.set(1960, 0, 1, 0, 0);
-
-                PickerBox box = PickerBox.newBox(MainActivity.this)
-                        .setType(Mode.YEAR_MONTH_DAY)
-                        .setMinMilliseconds(calendar.getTime().getTime())
-                        .setMaxMilliseconds(System.currentTimeMillis())
-                        .setCurMilliseconds(mLastTime)
-                        .setCallback(mOnDateSetListener)
-                        .setListener(new PickerBoxListener() {
+                TextPickerBox box = TextPickerBox.newBox(MainActivity.this)
+                        .setText("0")
+                        .setTextPickerBoxListener(new TextPickerBoxListener() {
                             @Override
-                            public void onEnsureClick(long timeMillis) {
-                                String text = getDateToString1(timeMillis);
-                                tv.setText(text);
+                            public void onEnsureClick(float money) {
+                                tv.setText(money + "元");
                             }
                         })
                         .create();
@@ -72,6 +82,57 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+//        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                List<com.sunzn.picker.library.picker.mode.Mode> sources = new ArrayList<>();
+//                sources.add(new Source("支付宝"));
+//                sources.add(new Source("微信"));
+//                sources.add(new Source("知网卡"));
+//
+//                ModePickerBox box = ModePickerBox.newBox(MainActivity.this)
+//                        .setSelected(new Source("支付宝"))
+//                        .setItemBeans(sources)
+//                        .setModePickerBoxListener(new ModePickerBoxListener() {
+//                            @Override
+//                            public void onEnsureClick(Mode mode) {
+//                                tv.setText(mode.getMode());
+//                            }
+//                        })
+//                        .create();
+//                box.show();
+//
+//            }
+//        });
+
+//        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Calendar calendar = new GregorianCalendar();
+//                calendar.set(1960, 0, 1, 0, 0);
+//
+//                DatePickerBox box = DatePickerBox.newBox(MainActivity.this)
+//                        .setType(Mode.YEAR_MONTH_DAY)
+//                        .setMinMilliseconds(calendar.getTime().getTime())
+//                        .setMaxMilliseconds(System.currentTimeMillis())
+//                        .setCurMilliseconds(mLastTime)
+//                        .setCallback(mOnDateSetListener)
+//                        .setListener(new DatePickerBoxListener() {
+//                            @Override
+//                            public void onEnsureClick(long timeMillis) {
+//                                String text = getDateToString1(timeMillis);
+//                                tv.setText(text);
+//                            }
+//                        })
+//                        .create();
+//                box.show();
+//
+//            }
+//        });
 
 
 //        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
