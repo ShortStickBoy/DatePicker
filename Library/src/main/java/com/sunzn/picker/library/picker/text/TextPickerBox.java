@@ -54,12 +54,13 @@ public class TextPickerBox {
 
     private void initModeBoxView(View view) {
         if (view != null) {
-            mInputView = (EditText) view.findViewById(R.id.et_text);
+            mInputView = view.findViewById(R.id.et_text);
             mInputView.setText(mText);
             mInputView.setSelection(mText.length());
+            mInputView.addTextChangedListener(new DecimalInputTextWatcher(mInputView, 7, 2));//限制输入位数：整数7位，小数点后两位
 
-            TextView cancelView = (TextView) view.findViewById(R.id.tv_cancel);
-            TextView ensureView = (TextView) view.findViewById(R.id.tv_ensure);
+            TextView cancelView = view.findViewById(R.id.tv_cancel);
+            TextView ensureView = view.findViewById(R.id.tv_ensure);
 
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,9 +89,9 @@ public class TextPickerBox {
         dismiss();
     }
 
-    private int getMoney() {
+    private float getMoney() {
         if (mInputView != null && mInputView.getText().toString().length() > 0) {
-            return Integer.valueOf(mInputView.getText().toString()) >= Integer.MAX_VALUE ? 0 : Integer.valueOf(mInputView.getText().toString());
+            return Float.valueOf(mInputView.getText().toString()) >= Integer.MAX_VALUE ? 0 : Float.valueOf(mInputView.getText().toString());
         } else {
             return 0;
         }

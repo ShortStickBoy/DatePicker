@@ -6,6 +6,6 @@ package com.sunzn.picker.library.picker.text;
 
 public interface TextPickerBoxListener {
 
-    void onEnsureClick(int money);
+    void onEnsureClick(float money);
 
 }
