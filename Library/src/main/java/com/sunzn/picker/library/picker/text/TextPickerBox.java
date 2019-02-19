@@ -55,9 +55,9 @@ public class TextPickerBox {
     private void initModeBoxView(View view) {
         if (view != null) {
             mInputView = view.findViewById(R.id.et_text);
+            mInputView.addTextChangedListener(new DecimalInputTextWatcher(mInputView, 7, 2));//限制输入位数：整数7位，小数点后两位
             mInputView.setText(mText);
             mInputView.setSelection(mText.length());
-            mInputView.addTextChangedListener(new DecimalInputTextWatcher(mInputView, 7, 2));//限制输入位数：整数7位，小数点后两位
 
             TextView cancelView = view.findViewById(R.id.tv_cancel);
             TextView ensureView = view.findViewById(R.id.tv_ensure);
