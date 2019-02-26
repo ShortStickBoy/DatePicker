@@ -26,7 +26,6 @@
         android:background="@android:color/white"
         android:gravity="center"
         android:inputType="number|numberDecimal"
-        android:maxLength="5"
         android:maxLines="1" />
 
     <View
