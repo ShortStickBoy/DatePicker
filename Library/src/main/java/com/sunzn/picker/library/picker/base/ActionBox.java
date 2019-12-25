@@ -138,11 +138,11 @@ public abstract class ActionBox<T> {
 
     public abstract void onActionBoxCreated();
 
-    private boolean getCancelable() {
+    public boolean getCancelable() {
         return this.mCancelable;
     }
 
-    private boolean getCanceledOnTouch() {
+    public boolean getCanceledOnTouch() {
         return this.mCanceledOnTouch;
     }
 

@@ -13,7 +13,7 @@ import com.sunzn.picker.library.picker.base.ActionBox;
  * Created by sunzn on 2017/8/30.
  */
 
-public class YearPickBox extends ActionBox {
+public class YearPickBox extends ActionBox<YearPickBox> {
 
     public interface ActionListener {
 
@@ -22,6 +22,10 @@ public class YearPickBox extends ActionBox {
         void onCancel();
 
     }
+
+    private boolean mCancelable = true;
+
+    private boolean mCanceledOnTouch = true;
 
     private YearWheel mYearWheel;
 
@@ -74,6 +78,26 @@ public class YearPickBox extends ActionBox {
     public YearPickBox setEndYear(int year) {
         this.mScrollerConfig.mEndYear = year;
         return this;
+    }
+
+    public YearPickBox setCancelable(boolean cancelable) {
+        this.mCancelable = cancelable;
+        return this;
+    }
+
+    public YearPickBox setCanceledOnTouch(boolean canceledOnTouch) {
+        this.mCanceledOnTouch = canceledOnTouch;
+        return this;
+    }
+
+    @Override
+    public boolean getCancelable() {
+        return mCancelable;
+    }
+
+    @Override
+    public boolean getCanceledOnTouch() {
+        return mCanceledOnTouch;
     }
 
     private void initActionView(TextView cancel, TextView ensure) {
