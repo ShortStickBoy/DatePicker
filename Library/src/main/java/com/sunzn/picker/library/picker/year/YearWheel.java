@@ -51,7 +51,7 @@ public class YearWheel {
     }
 
     private void initStaYear(View view) {
-        mStaYearView = (WheelView) view.findViewById(R.id.sta_year);
+        mStaYearView = view.findViewById(R.id.sta_year);
         mStaYearView.addChangingListener(mStaYearListener);
 
         int minYear = mYearRepository.getMinYear();
@@ -65,7 +65,7 @@ public class YearWheel {
     }
 
     private void initEndYear(View view) {
-        mEndYearView = (WheelView) view.findViewById(R.id.end_year);
+        mEndYearView = view.findViewById(R.id.end_year);
         mEndYearView.addChangingListener(mEndYearListener);
 
         int minYear = mYearRepository.getMinYear();
