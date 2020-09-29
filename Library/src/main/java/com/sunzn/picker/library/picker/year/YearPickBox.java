@@ -23,6 +23,12 @@ public class YearPickBox extends ActionBox<YearPickBox> {
 
     }
 
+    public interface ConfigListener {
+
+        void onConfig(ScrollerConfig value);
+
+    }
+
     private boolean mCancelable = true;
 
     private boolean mCanceledOnTouch = true;
@@ -30,6 +36,8 @@ public class YearPickBox extends ActionBox<YearPickBox> {
     private YearWheel mYearWheel;
 
     private ActionListener mActionListener;
+
+    private ConfigListener mConfigListener;
 
     private ScrollerConfig mScrollerConfig;
 
@@ -47,12 +55,24 @@ public class YearPickBox extends ActionBox<YearPickBox> {
         return this;
     }
 
+    public YearPickBox setConfigListener(ConfigListener listener) {
+        this.mConfigListener = listener;
+        return this;
+    }
+
     @Override
     public void onActionBoxCreated() {
+        initScrollerConfig(mScrollerConfig);
         mYearWheel = new YearWheel(getRootView(), mScrollerConfig);
         TextView cancel = (TextView) findViewById(R.id.tv_cancel);
         TextView ensure = (TextView) findViewById(R.id.tv_ensure);
         initActionView(cancel, ensure);
+    }
+
+    private void initScrollerConfig(ScrollerConfig config) {
+        if (mConfigListener != null) {
+            mConfigListener.onConfig(config);
+        }
     }
 
     public YearPickBox setCyclic(boolean isCyclic) {

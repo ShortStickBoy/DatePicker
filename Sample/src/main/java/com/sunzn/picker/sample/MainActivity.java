@@ -6,9 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sunzn.picker.library.DatePickerDialog;
+import com.sunzn.picker.library.config.ScrollerConfig;
 import com.sunzn.picker.library.listener.OnDateSetListener;
-import com.sunzn.picker.library.picker.text.TextPickerBox;
-import com.sunzn.picker.library.picker.text.TextPickerBoxListener;
 import com.sunzn.picker.library.picker.year.YearPickBox;
 import com.sunzn.picker.library.picker.year.YearPickBoxUtils;
 
@@ -46,42 +45,47 @@ public class MainActivity extends AppCompatActivity {
 
         tv = (TextView) findViewById(R.id.tv);
 
-//        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                YearPickBoxUtils.showBox(MainActivity.this, 1995, 2000, 2005, new YearPickBox.ActionListener() {
-//                    @Override
-//                    public void onEnsure(int startYear, int endYear) {
-//                        tv.setText("时间：" + startYear + " - " + endYear);
-//                    }
-//
-//                    @Override
-//                    public void onCancel() {
-//
-//                    }
-//                });
-//
-//            }
-//        });
-
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                TextPickerBox box = TextPickerBox.newBox(MainActivity.this)
-                        .setText("0")
-                        .setTextPickerBoxListener(new TextPickerBoxListener() {
-                            @Override
-                            public void onEnsureClick(float money) {
-                                tv.setText(money + "元");
-                            }
-                        })
-                        .create();
-                box.show();
+                YearPickBoxUtils.showBox(MainActivity.this, true, 1995, 2020, 1995, 2019, new YearPickBox.ActionListener() {
+                    @Override
+                    public void onEnsure(int startYear, int endYear) {
+                        tv.setText("时间：" + startYear + " - " + endYear);
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                }, new YearPickBox.ConfigListener() {
+                    @Override
+                    public void onConfig(ScrollerConfig value) {
+                        value.mWheelTVSelectorColor = 0XFFFF4081;
+                    }
+                });
 
             }
         });
+
+//        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                TextPickerBox box = TextPickerBox.newBox(MainActivity.this)
+//                        .setText("0")
+//                        .setTextPickerBoxListener(new TextPickerBoxListener() {
+//                            @Override
+//                            public void onEnsureClick(float money) {
+//                                tv.setText(money + "元");
+//                            }
+//                        })
+//                        .create();
+//                box.show();
+//
+//            }
+//        });
 
 
 //        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
